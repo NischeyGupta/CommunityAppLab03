@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-public class Province
+namespace CommunityApp.Models
 {
-    [Key]
-    // [Required]
-    [Display(Name = "Province Code")]
-    public string? ProvinceCode { get; set; }
+    public class Province
+    {
+        [Key]
+        [Required]
+        public string? ProvinceCode { get; set; }
 
-    // [Required]
-    [Display(Name = "Province")]
-    public string? ProvinceName { get; set; }
+        [Required]
+        public string? ProvinceName { get; set; }
 
-    public ICollection<City>? Cities { get; set; }
+        public ICollection<City> Cities { get; set; } = new List<City>();
+    }
 }

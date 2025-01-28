@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommunityApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250128202057_FixPendingChanges")]
-    partial class FixPendingChanges
+    [Migration("20250128223457_M1")]
+    partial class M1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace CommunityApp.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
 
-            modelBuilder.Entity("City", b =>
+            modelBuilder.Entity("CommunityApp.Models.City", b =>
                 {
                     b.Property<int>("CityId")
                         .ValueGeneratedOnAdd()
@@ -34,6 +34,7 @@ namespace CommunityApp.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ProvinceCode")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("CityId");
@@ -105,6 +106,37 @@ namespace CommunityApp.Data.Migrations
                             CityName = "Banff",
                             Population = 8305,
                             ProvinceCode = "AB"
+                        });
+                });
+
+            modelBuilder.Entity("CommunityApp.Models.Province", b =>
+                {
+                    b.Property<string>("ProvinceCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProvinceName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ProvinceCode");
+
+                    b.ToTable("Provinces", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ProvinceCode = "BC",
+                            ProvinceName = "British Columbia"
+                        },
+                        new
+                        {
+                            ProvinceCode = "ON",
+                            ProvinceName = "Ontario"
+                        },
+                        new
+                        {
+                            ProvinceCode = "AB",
+                            ProvinceName = "Alberta"
                         });
                 });
 
@@ -304,41 +336,13 @@ namespace CommunityApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Province", b =>
+            modelBuilder.Entity("CommunityApp.Models.City", b =>
                 {
-                    b.Property<string>("ProvinceCode")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProvinceName")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ProvinceCode");
-
-                    b.ToTable("Provinces", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            ProvinceCode = "BC",
-                            ProvinceName = "British Columbia"
-                        },
-                        new
-                        {
-                            ProvinceCode = "ON",
-                            ProvinceName = "Ontario"
-                        },
-                        new
-                        {
-                            ProvinceCode = "AB",
-                            ProvinceName = "Alberta"
-                        });
-                });
-
-            modelBuilder.Entity("City", b =>
-                {
-                    b.HasOne("Province", "Province")
+                    b.HasOne("CommunityApp.Models.Province", "Province")
                         .WithMany("Cities")
-                        .HasForeignKey("ProvinceCode");
+                        .HasForeignKey("ProvinceCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Province");
                 });
@@ -394,7 +398,7 @@ namespace CommunityApp.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Province", b =>
+            modelBuilder.Entity("CommunityApp.Models.Province", b =>
                 {
                     b.Navigation("Cities");
                 });

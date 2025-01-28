@@ -57,7 +57,7 @@ namespace CommunityApp.Data.Migrations
                 columns: table => new
                 {
                     ProvinceCode = table.Column<string>(type: "TEXT", nullable: false),
-                    ProvinceName = table.Column<string>(type: "TEXT", nullable: true)
+                    ProvinceName = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -176,9 +176,9 @@ namespace CommunityApp.Data.Migrations
                 {
                     CityId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CityName = table.Column<string>(type: "TEXT", nullable: true),
+                    CityName = table.Column<string>(type: "TEXT", nullable: false),
                     Population = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProvinceCode = table.Column<string>(type: "TEXT", nullable: true)
+                    ProvinceCode = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -187,7 +187,8 @@ namespace CommunityApp.Data.Migrations
                         name: "FK_Cities_Provinces_ProvinceCode",
                         column: x => x.ProvinceCode,
                         principalTable: "Provinces",
-                        principalColumn: "ProvinceCode");
+                        principalColumn: "ProvinceCode",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -208,12 +209,12 @@ namespace CommunityApp.Data.Migrations
                     { 1, "Vancouver", 706012, "BC" },
                     { 2, "Surrey", 633234, "BC" },
                     { 3, "Richmond", 222954, "BC" },
-                    { 4, "Toronto", 3026000, "ON" },
-                    { 5, "Ottawa", 1072000, "ON" },
-                    { 6, "London", 448051, "ON" },
-                    { 7, "Calgary", 1414000, "AB" },
-                    { 8, "Edmonton", 1087000, "AB" },
-                    { 9, "Banff", 8305, "AB" }
+                    { 5, "Toronto", 3026000, "ON" },
+                    { 6, "Ottawa", 1072000, "ON" },
+                    { 7, "London", 448051, "ON" },
+                    { 9, "Calgary", 1414000, "AB" },
+                    { 10, "Edmonton", 1087000, "AB" },
+                    { 11, "Banff", 8305, "AB" }
                 });
 
             migrationBuilder.CreateIndex(

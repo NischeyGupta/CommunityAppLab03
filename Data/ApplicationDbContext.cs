@@ -1,4 +1,5 @@
 ﻿// using CommunityApp.Models;
+using CommunityApp.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

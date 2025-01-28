@@ -1,3 +1,4 @@
+using CommunityApp.Models;
 using Microsoft.EntityFrameworkCore;
 // using CommunityApp.Models;
 
