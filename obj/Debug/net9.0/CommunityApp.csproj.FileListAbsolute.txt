@@ -430,3 +430,4 @@ C:\Users\rkgup\4870\Lab03\CommunityApp\obj\Debug\net9.0\refint\CommunityApp.dll
 C:\Users\rkgup\4870\Lab03\CommunityApp\obj\Debug\net9.0\CommunityApp.pdb
 C:\Users\rkgup\4870\Lab03\CommunityApp\obj\Debug\net9.0\CommunityApp.genruntimeconfig.cache
 C:\Users\rkgup\4870\Lab03\CommunityApp\obj\Debug\net9.0\ref\CommunityApp.dll
+C:\Users\rkgup\4870\Lab03\CommunityApp\obj\Debug\net9.0\CommunityApp.sourcelink.json

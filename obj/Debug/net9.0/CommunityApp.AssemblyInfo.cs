@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CommunityApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1b36d9073a4c18878c1747c0477dfa5df669fa4")]
 [assembly: System.Reflection.AssemblyProductAttribute("CommunityApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CommunityApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
